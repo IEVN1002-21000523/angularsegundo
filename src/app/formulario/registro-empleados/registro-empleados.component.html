@@ -1,0 +1,65 @@
+<div class="container mx-auto p-6 bg-gray-100">
+  <div class="form-section bg-white shadow-md rounded-lg p-5 mb-6">
+      <form [formGroup]="formGroup" (ngSubmit)="registrar()" class="space-y-4">
+          <div class="form-group flex flex-col">
+              <label for="matricula" class="text-sm font-medium text-gray-700">Matrícula</label>
+              <input type="number" id="matricula" formControlName="matricula" class="input"/>
+          </div>
+          <div class="form-group flex flex-col">
+              <label for="nombre" class="text-sm font-medium text-gray-700">Nombre</label>
+              <input type="text" id="nombre" formControlName="nombre" class="input"/>
+          </div>
+          <div class="form-group flex flex-col">
+              <label for="correo" class="text-sm font-medium text-gray-700">Correo</label>
+              <input type="email" id="correo" formControlName="correo" class="input"/>
+          </div>
+          <div class="form-group flex flex-col">
+              <label for="edad" class="text-sm font-medium text-gray-700">Edad</label>
+              <input type="number" id="edad" formControlName="edad" class="input"/>
+          </div>
+          <div class="form-group flex flex-col">
+              <label for="horas" class="text-sm font-medium text-gray-700">Horas trabajadas</label>
+              <input type="number" id="horas" formControlName="horas" class="input"/>
+          </div>
+          <div class="button-group flex space-x-2">
+              <button type="submit" class="button bg-blue-600 text-white">Registrar</button>
+              <button type="button" (click)="modificar()" class="button bg-yellow-600 text-white">Modificar</button>
+              <button type="button" (click)="eliminar()" class="button bg-red-600 text-white">Eliminar</button>
+          </div>
+      </form>
+  </div>
+
+  <div class="table-section bg-white shadow-md rounded-lg p-5">
+      <button type="button" (click)="imprimir()" class="button bg-blue-600 text-white mb-4">Imprimir tabla</button>
+      <table class="table-auto w-full border border-gray-300">
+          <thead class="bg-gray-200 text-gray-700">
+              <tr>
+                  <th class="p-2 border-b">Matrícula</th>
+                  <th class="p-2 border-b">Nombre</th>
+                  <th class="p-2 border-b">Correo</th>
+                  <th class="p-2 border-b">Edad</th>
+                  <th class="p-2 border-b">Horas trabajadas</th>
+                  <th class="p-2 border-b">Horas x pagar</th>
+                  <th class="p-2 border-b">Horas extras</th>
+                  <th class="p-2 border-b">Subtotal</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let empleado of empleadosI" class="text-center border-t border-gray-200">
+                  <td class="p-2">{{empleado.matricula}}</td>
+                  <td class="p-2">{{empleado.nombre}}</td>
+                  <td class="p-2">{{empleado.correo}}</td>
+                  <td class="p-2">{{empleado.edad}}</td>
+                  <td class="p-2">{{empleado.horas}}</td>
+                  <td class="p-2">{{empleado.horasPago | currency}}</td>
+                  <td class="p-2">{{empleado.horasExtra | currency}}</td>
+                  <td class="p-2">{{empleado.subtotal | currency}}</td>
+              </tr>
+              <tr class="font-semibold bg-gray-100 text-right">
+                  <td colspan="7" class="p-2">Total a pagar</td>
+                  <td class="p-2">{{total | currency}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>

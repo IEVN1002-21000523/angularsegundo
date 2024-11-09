@@ -1,0 +1,59 @@
+<div class="grid grid-cols-2 gap-8 p-6 bg-gray-100 rounded-lg">
+  <!-- Formulario de datos personales -->
+  <div class="p-6 bg-white rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold mb-4">Datos Personales</h2>
+      <form [formGroup]="formGroup" (ngSubmit)="imprimir()" class="space-y-4">
+          <div class="grid grid-cols-2 gap-4 items-center">
+              <label for="nombre" class="text-lg font-medium">Nombre</label>
+              <input type="text" id="nombre" class="input-field" formControlName="nombre"/>
+          </div>
+          <div class="grid grid-cols-2 gap-4 items-center">
+              <label for="aPaterno" class="text-lg font-medium">Apellido Paterno</label>
+              <input type="text" id="aPaterno" class="input-field" formControlName="aPaterno"/>
+          </div>
+          <div class="grid grid-cols-2 gap-4 items-center">
+              <label for="aMaterno" class="text-lg font-medium">Apellido Materno</label>
+              <input type="text" id="aMaterno" class="input-field" formControlName="aMaterno"/>
+          </div>
+          <div>
+              <h3 class="text-lg font-semibold mb-2">Fecha de Nacimiento</h3>
+              <div class="grid grid-cols-3 gap-4">
+                  <div>
+                      <label for="dia" class="block font-medium">Día</label>
+                      <input type="text" id="dia" class="input-field" formControlName="dia"/>
+                  </div>
+                  <div>
+                      <label for="mes" class="block font-medium">Mes</label>
+                      <input type="text" id="mes" class="input-field" formControlName="mes"/>
+                  </div>
+                  <div>
+                      <label for="anio" class="block font-medium">Año</label>
+                      <input type="text" id="anio" class="input-field" formControlName="anio"/>
+                  </div>
+              </div>
+          </div>
+          <div>
+              <h3 class="text-lg font-semibold mb-2">Sexo</h3>
+              <div class="flex items-center space-x-4">
+                  <label class="flex items-center">
+                      <input type="radio" name="sexo" value="0" formControlName="sexo" class="mr-2"/>
+                      Mujer
+                  </label>
+                  <label class="flex items-center">
+                      <input type="radio" name="sexo" value="1" formControlName="sexo" class="mr-2"/>
+                      Hombre
+                  </label>
+              </div>
+          </div>
+          <button type="submit" class="w-full py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-600">Imprimir</button>
+      </form>
+  </div>
+
+  <!-- Visualización de datos -->
+  <div class="flex flex-col items-center justify-start p-6 bg-white rounded-lg shadow-lg space-y-4">
+      <p class="text-lg font-semibold">{{ Unombre }}</p>
+      <p class="text-lg font-semibold">{{ Uedad }}</p>
+      <p class="text-lg font-semibold">{{ Uzodiacal }}</p>
+      <img [src]="Uimagen" alt="{{ Uzodiacal }}" class="w-24 h-24 rounded-full">
+  </div>
+</div>
